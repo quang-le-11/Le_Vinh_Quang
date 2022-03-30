@@ -3,10 +3,13 @@
 namespace Magenest\Movie\Block;
 
 use Magento\Framework\View\Element\Template;
-use Magenest\Movie\Model\ResourceModel\Post\CollectionFactory;
+use Magenest\Movie\Model\ResourceModel\Movie\CollectionFactory;
 
 class Showdata extends Template
 {
+    /**
+     * @var CollectionFactory
+     */
     protected $_collecton;
 
     /**
@@ -17,14 +20,14 @@ class Showdata extends Template
     public function __construct(
         Template\Context  $context,
         CollectionFactory $collectionFactory,
-        array             $data = [])
-    {
+        array             $data = []
+    ) {
         $this->_collecton = $collectionFactory;
         parent::__construct($context, $data);
     }
 
     /**
-     * @return \Magenest\Movie\Model\ResourceModel\Post\Collection
+     * @return \Magenest\Movie\Model\ResourceModel\Movie\Collection
      *
      */
     public function getMovie()
@@ -43,10 +46,9 @@ class Showdata extends Template
             ->join(
                 ['actor' => $movieCollection->getTable('magenest_actor')],
                 "movie_actor.actor_id = actor.actor_id",
-                ['actor' => 'actor.name'])
+                ['actor' => new \Zend_Db_Expr('GROUP_CONCAT(actor.name)')])
             ->group('movie_id');
 
         return $movieCollection;
-
     }
 }

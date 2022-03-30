@@ -4,6 +4,9 @@ namespace Magenest\Movie\Controller\Index;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $_pageFactory;
 
     /**
@@ -13,12 +16,14 @@ class Index extends \Magento\Framework\App\Action\Action
     public function __construct(
         \Magento\Framework\App\Action\Context      $context,
         \Magento\Framework\View\Result\PageFactory $pageFactory
-    )
-    {
+    ) {
         $this->_pageFactory = $pageFactory;
         return parent::__construct($context);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function execute()
     {
         return $this->_pageFactory->create();
