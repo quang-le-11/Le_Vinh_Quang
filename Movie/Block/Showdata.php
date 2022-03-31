@@ -11,6 +11,7 @@ class Showdata extends Template
      * @var CollectionFactory
      */
     protected $_collecton;
+    protected $_abstractFieldArray;
 
     /**
      * @param Template\Context $context
@@ -24,6 +25,7 @@ class Showdata extends Template
     ) {
         $this->_collecton = $collectionFactory;
         parent::__construct($context, $data);
+
     }
 
     /**
