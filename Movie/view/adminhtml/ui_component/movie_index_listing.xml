@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">movie_index_listing.magenest_movie_listing_data_source</item>
@@ -18,38 +19,38 @@
             </button>
         </buttons>
     </settings>
-        <listingToolbar name="listing_top">
-            <bookmark name="bookmarks"/>
-            <columnsControls name="columns_controls"/>
-            <filterSearch name="fulltext"/>
-            <filters name="listing_filters"/>
-            <paging name="listing_paging"/>
-            <exportButton name="export_button"/>
-            <massaction name="listing_massaction">
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <exportButton name="export_button"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
-                        <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
-                    </item>
-                </argument>
-                <action name="delete">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="type" xsi:type="string">delete</item>
-                            <item name="label" xsi:type="string" translate="true">Delete</item>
-<!--                            <item name="url" xsi:type="url" path="mageplaza_helloworld/post/massDelete"/>-->
-                            <item name="confirm" xsi:type="array">
-                                <item name="title" xsi:type="string" translate="true">Delete Post</item>
-                                <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete
-                                    selected items?
-                                </item>
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="*/*/delete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Row</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete
+                                selected items?
                             </item>
                         </item>
-                    </argument>
-                </action>
-            </massaction>
-        </listingToolbar>
-
-
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
     <dataSource name="magenest_movie_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <updateUrl path="mui/index/render"/>
@@ -58,42 +59,19 @@
             </storageConfig>
         </settings>
         <aclResource>Magento_Reports::salesroot_sales</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="magenest_movie_listing_data_source">
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
+                      name="magenest_movie_listing_data_source">
             <settings>
                 <requestFieldName>movie_id</requestFieldName>
                 <primaryFieldName>movie_id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
-    <listingToolbar name="listing_top">
-        <settings>
-            <sticky>true</sticky>
-        </settings>
-        <bookmark name="bookmarks"/>
-        <columnsControls name="columns_controls"/>
-        <exportButton name="export_button"/>
-        <filters name="listing_filters">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="templates" xsi:type="array">
-                        <item name="filters" xsi:type="array">
-                            <item name="select" xsi:type="array">
-                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
-                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
-                            </item>
-                        </item>
-                    </item>
-                </item>
-            </argument>
-        </filters>
-        <paging name="listing_paging"/>
-        <massaction name="listing_massaction" />
-    </listingToolbar>
 
     <columns name="your_grid_columns">
         <selectionsColumn name="ids">
             <settings>
-                <indexField>item_id</indexField>
+                <indexField>movie_id</indexField>
             </settings>
         </selectionsColumn>
         <column name="movie_id">
@@ -133,169 +111,170 @@
                 <label translate="true">Actor</label>
             </settings>
         </column>
+        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\Action">
+            <settings>
+                <indexField>post_id</indexField>
+            </settings>
+        </actionsColumn>
     </columns>
 </listing>
 
 
+    <!--<?xml version="1.0" encoding="UTF-8"?>-->
+    <!--<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+    <!--         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">-->
+
+    <!--    <argument name="data" xsi:type="array">-->
+    <!--        <item name="js_config" xsi:type="array">-->
+    <!--            <item name="provider" xsi:type="string">movie_index_listing.magenest_movie_listing_data_source</item>-->
+    <!--            <item name="deps" xsi:type="string">movie_index_listing.magenest_movie_listing_data_source</item>-->
+    <!--        </item>-->
+    <!--        <item name="spinner" xsi:type="string">spinner_columns</item>-->
+    <!--        <item name="buttons" xsi:type="array">-->
+    <!--            <item name="add" xsi:type="array">-->
+    <!--                <item name="name" xsi:type="string">add</item>-->
+    <!--                <item name="label" xsi:type="string" translate="true">New Rule</item>-->
+    <!--                <item name="class" xsi:type="string">primary</item>-->
+    <!--                <item name="url" xsi:type="string">*/*/newmovie</item>-->
+    <!--            </item>-->
+    <!--        </item>-->
+    <!--    </argument>-->
+    <!--    <listingToolbar name="listing_top">-->
+    <!--        <bookmark name="bookmarks"/>-->
+    <!--        <columnsControls name="columns_controls"/>-->
+    <!--        <filterSearch name="fulltext"/>-->
+    <!--        <filters name="listing_filters"/>-->
+    <!--        <paging name="listing_paging"/>-->
+    <!--        <exportButton name="export_button"/>-->
+    <!--        <massaction name="listing_massaction">-->
+    <!--            <argument name="data" xsi:type="array">-->
+    <!--                <item name="config" xsi:type="array">-->
+    <!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>-->
+    <!--                </item>-->
+    <!--            </argument>-->
+    <!--            <action name="delete">-->
+    <!--                <argument name="data" xsi:type="array">-->
+    <!--                    <item name="config" xsi:type="array">-->
+    <!--                        <item name="type" xsi:type="string">delete</item>-->
+    <!--                        <item name="label" xsi:type="string" translate="true">Delete</item>-->
+    <!--                        <item name="url" xsi:type="url" path="mageplaza_helloworld/post/massDelete"/>-->
+    <!--                        <item name="confirm" xsi:type="array">-->
+    <!--                            <item name="title" xsi:type="string" translate="true">Delete Post</item>-->
+    <!--                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete-->
+    <!--                                selected items?-->
+    <!--                            </item>-->
+    <!--                        </item>-->
+    <!--                    </item>-->
+    <!--                </argument>-->
+    <!--            </action>-->
+    <!--        </massaction>-->
+    <!--    </listingToolbar>-->
+
+    <!--    <dataSource name="nameOfDataSource">-->
+    <!--        <argument name="dataProvider" xsi:type="configurableObject">-->
+    <!--            <argument name="class" xsi:type="string">-->
+    <!--                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider-->
+    <!--            </argument>-->
+    <!--            <argument name="name" xsi:type="string">magenest_movie_listing_data_source</argument>-->
+    <!--            <argument name="primaryFieldName" xsi:type="string">movie_id</argument>-->
+    <!--            <argument name="requestFieldName" xsi:type="string">movie_id</argument>-->
+    <!--            <argument name="data" xsi:type="array">-->
+    <!--                <item name="config" xsi:type="array">-->
+    <!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>-->
+    <!--                    <item name="update_url" xsi:type="url" path="mui/index/render"/>-->
+    <!--                    <item name="storageConfig" xsi:type="array">-->
+    <!--                        <item name="indexField" xsi:type="string">movie_id</item>-->
+    <!--                    </item>-->
+    <!--                </item>-->
+    <!--            </argument>-->
+    <!--        </argument>-->
+    <!--    </dataSource>-->
 
 
+    <!--    <columns name="spinner_columns">-->
+    <!--        <selectionsColumn name="ids">-->
+    <!--            <argument name="data" xsi:type="array">-->
+    <!--                <item name="config" xsi:type="array">-->
+    <!--                    <item name="resizeEnabled" xsi:type="boolean">false</item>-->
+    <!--                    <item name="resizeDefaultWidth" xsi:type="string">55</item>-->
+    <!--                    <item name="indexField" xsi:type="string">movie_id</item>-->
+    <!--                </item>-->
+    <!--            </argument>-->
+    <!--        </selectionsColumn>-->
+    <!--        <column name="movie_id">-->
+    <!--            <argument name="data" xsi:type="array">-->
+    <!--                <item name="config" xsi:type="array">-->
+    <!--                    <item name="filter" xsi:type="string">textRange</item>-->
+    <!--                    <item name="sorting" xsi:type="string">asc</item>-->
+    <!--                    <item name="label" xsi:type="string" translate="true">ID</item>-->
+    <!--                </item>-->
+    <!--            </argument>-->
+    <!--        </column>-->
+    <!--        <column name="name">-->
+    <!--            <argument name="data" xsi:type="array">-->
+    <!--                <item name="config" xsi:type="array">-->
+    <!--                    <item name="filter" xsi:type="string">text</item>-->
+    <!--                    <item name="editor" xsi:type="array">-->
+    <!--                        <item name="editorType" xsi:type="string">text</item>-->
+    <!--                        <item name="validation" xsi:type="array">-->
+    <!--                            <item name="required-entry" xsi:type="boolean">true</item>-->
+    <!--                        </item>-->
+    <!--                    </item>-->
+    <!--                    <item name="label" xsi:type="string" translate="true">Name</item>-->
+    <!--                </item>-->
+    <!--            </argument>-->
+    <!--        </column>-->
+    <!--        <column name="description">-->
+    <!--            <argument name="data" xsi:type="array">-->
+    <!--                <item name="config" xsi:type="array">-->
+    <!--                    <item name="filter" xsi:type="string">text</item>-->
+    <!--                    <item name="editor" xsi:type="array">-->
+    <!--                        <item name="editorType" xsi:type="string">text</item>-->
+    <!--                        <item name="validation" xsi:type="array">-->
+    <!--                            <item name="required-entry" xsi:type="boolean">true</item>-->
+    <!--                        </item>-->
+    <!--                    </item>-->
+    <!--                    <item name="label" xsi:type="string" translate="true">Description</item>-->
+    <!--                </item>-->
+    <!--            </argument>-->
+    <!--        </column>-->
+    <!--&lt;!&ndash;        <column name="rating">&ndash;&gt;-->
+    <!--&lt;!&ndash;            <argument name="data" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                <item name="config" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <item name="filter" xsi:type="string">textRange</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <item name="label" xsi:type="string" translate="true">Rating</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                </item>&ndash;&gt;-->
+    <!--&lt;!&ndash;            </argument>&ndash;&gt;-->
+    <!--&lt;!&ndash;        </column>&ndash;&gt;-->
+    <!--&lt;!&ndash;        <column name="movie">&ndash;&gt;-->
+    <!--&lt;!&ndash;            <argument name="data" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                <item name="config" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <item name="filter" xsi:type="string">text</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <item name="editor" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <item name="editorType" xsi:type="string">text</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <item name="validation" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                            <item name="required-entry" xsi:type="boolean">true</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        </item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    </item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <item name="label" xsi:type="string" translate="true">Movie</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                </item>&ndash;&gt;-->
+    <!--&lt;!&ndash;            </argument>&ndash;&gt;-->
+    <!--&lt;!&ndash;        </column>&ndash;&gt;-->
+    <!--&lt;!&ndash;        <column name="actor">&ndash;&gt;-->
+    <!--&lt;!&ndash;            <argument name="data" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                <item name="config" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <item name="filter" xsi:type="string">text</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <item name="editor" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <item name="editorType" xsi:type="string">text</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <item name="validation" xsi:type="array">&ndash;&gt;-->
+    <!--&lt;!&ndash;                            <item name="required-entry" xsi:type="boolean">true</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        </item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    </item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <item name="label" xsi:type="string" translate="true">Actor</item>&ndash;&gt;-->
+    <!--&lt;!&ndash;                </item>&ndash;&gt;-->
+    <!--&lt;!&ndash;            </argument>&ndash;&gt;-->
+    <!--&lt;!&ndash;        </column>&ndash;&gt;-->
 
-
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-<!--         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">-->
-
-<!--    <argument name="data" xsi:type="array">-->
-<!--        <item name="js_config" xsi:type="array">-->
-<!--            <item name="provider" xsi:type="string">movie_index_listing.magenest_movie_listing_data_source</item>-->
-<!--            <item name="deps" xsi:type="string">movie_index_listing.magenest_movie_listing_data_source</item>-->
-<!--        </item>-->
-<!--        <item name="spinner" xsi:type="string">spinner_columns</item>-->
-<!--        <item name="buttons" xsi:type="array">-->
-<!--            <item name="add" xsi:type="array">-->
-<!--                <item name="name" xsi:type="string">add</item>-->
-<!--                <item name="label" xsi:type="string" translate="true">New Rule</item>-->
-<!--                <item name="class" xsi:type="string">primary</item>-->
-<!--                <item name="url" xsi:type="string">*/*/newmovie</item>-->
-<!--            </item>-->
-<!--        </item>-->
-<!--    </argument>-->
-<!--    <listingToolbar name="listing_top">-->
-<!--        <bookmark name="bookmarks"/>-->
-<!--        <columnsControls name="columns_controls"/>-->
-<!--        <filterSearch name="fulltext"/>-->
-<!--        <filters name="listing_filters"/>-->
-<!--        <paging name="listing_paging"/>-->
-<!--        <exportButton name="export_button"/>-->
-<!--        <massaction name="listing_massaction">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--            <action name="delete">-->
-<!--                <argument name="data" xsi:type="array">-->
-<!--                    <item name="config" xsi:type="array">-->
-<!--                        <item name="type" xsi:type="string">delete</item>-->
-<!--                        <item name="label" xsi:type="string" translate="true">Delete</item>-->
-<!--                        <item name="url" xsi:type="url" path="mageplaza_helloworld/post/massDelete"/>-->
-<!--                        <item name="confirm" xsi:type="array">-->
-<!--                            <item name="title" xsi:type="string" translate="true">Delete Post</item>-->
-<!--                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete-->
-<!--                                selected items?-->
-<!--                            </item>-->
-<!--                        </item>-->
-<!--                    </item>-->
-<!--                </argument>-->
-<!--            </action>-->
-<!--        </massaction>-->
-<!--    </listingToolbar>-->
-
-<!--    <dataSource name="nameOfDataSource">-->
-<!--        <argument name="dataProvider" xsi:type="configurableObject">-->
-<!--            <argument name="class" xsi:type="string">-->
-<!--                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider-->
-<!--            </argument>-->
-<!--            <argument name="name" xsi:type="string">magenest_movie_listing_data_source</argument>-->
-<!--            <argument name="primaryFieldName" xsi:type="string">movie_id</argument>-->
-<!--            <argument name="requestFieldName" xsi:type="string">movie_id</argument>-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>-->
-<!--                    <item name="update_url" xsi:type="url" path="mui/index/render"/>-->
-<!--                    <item name="storageConfig" xsi:type="array">-->
-<!--                        <item name="indexField" xsi:type="string">movie_id</item>-->
-<!--                    </item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </argument>-->
-<!--    </dataSource>-->
-
-
-<!--    <columns name="spinner_columns">-->
-<!--        <selectionsColumn name="ids">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="resizeEnabled" xsi:type="boolean">false</item>-->
-<!--                    <item name="resizeDefaultWidth" xsi:type="string">55</item>-->
-<!--                    <item name="indexField" xsi:type="string">movie_id</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </selectionsColumn>-->
-<!--        <column name="movie_id">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="filter" xsi:type="string">textRange</item>-->
-<!--                    <item name="sorting" xsi:type="string">asc</item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">ID</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </column>-->
-<!--        <column name="name">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="filter" xsi:type="string">text</item>-->
-<!--                    <item name="editor" xsi:type="array">-->
-<!--                        <item name="editorType" xsi:type="string">text</item>-->
-<!--                        <item name="validation" xsi:type="array">-->
-<!--                            <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                        </item>-->
-<!--                    </item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Name</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </column>-->
-<!--        <column name="description">-->
-<!--            <argument name="data" xsi:type="array">-->
-<!--                <item name="config" xsi:type="array">-->
-<!--                    <item name="filter" xsi:type="string">text</item>-->
-<!--                    <item name="editor" xsi:type="array">-->
-<!--                        <item name="editorType" xsi:type="string">text</item>-->
-<!--                        <item name="validation" xsi:type="array">-->
-<!--                            <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                        </item>-->
-<!--                    </item>-->
-<!--                    <item name="label" xsi:type="string" translate="true">Description</item>-->
-<!--                </item>-->
-<!--            </argument>-->
-<!--        </column>-->
-<!--&lt;!&ndash;        <column name="rating">&ndash;&gt;-->
-<!--&lt;!&ndash;            <argument name="data" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                <item name="config" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <item name="filter" xsi:type="string">textRange</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <item name="label" xsi:type="string" translate="true">Rating</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                </item>&ndash;&gt;-->
-<!--&lt;!&ndash;            </argument>&ndash;&gt;-->
-<!--&lt;!&ndash;        </column>&ndash;&gt;-->
-<!--&lt;!&ndash;        <column name="movie">&ndash;&gt;-->
-<!--&lt;!&ndash;            <argument name="data" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                <item name="config" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <item name="filter" xsi:type="string">text</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <item name="editor" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <item name="editorType" xsi:type="string">text</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <item name="validation" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <item name="required-entry" xsi:type="boolean">true</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </item>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </item>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <item name="label" xsi:type="string" translate="true">Movie</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                </item>&ndash;&gt;-->
-<!--&lt;!&ndash;            </argument>&ndash;&gt;-->
-<!--&lt;!&ndash;        </column>&ndash;&gt;-->
-<!--&lt;!&ndash;        <column name="actor">&ndash;&gt;-->
-<!--&lt;!&ndash;            <argument name="data" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                <item name="config" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <item name="filter" xsi:type="string">text</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <item name="editor" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <item name="editorType" xsi:type="string">text</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <item name="validation" xsi:type="array">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <item name="required-entry" xsi:type="boolean">true</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </item>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </item>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <item name="label" xsi:type="string" translate="true">Actor</item>&ndash;&gt;-->
-<!--&lt;!&ndash;                </item>&ndash;&gt;-->
-<!--&lt;!&ndash;            </argument>&ndash;&gt;-->
-<!--&lt;!&ndash;        </column>&ndash;&gt;-->
-
-<!--    </columns>-->
-<!--</listing>-->
+    <!--    </columns>-->
+    <!--</listing>-->
 

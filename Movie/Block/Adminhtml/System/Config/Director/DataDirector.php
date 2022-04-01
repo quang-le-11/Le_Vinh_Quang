@@ -3,14 +3,14 @@
 namespace Magenest\Movie\Block\Adminhtml\System\Config\Director;
 
 use Magento\Framework\View\Element\Template;
-use Magenest\Movie\Model\ResourceModel\Movie\CollectionFactory;
+use Magenest\Movie\Model\ResourceModel\Director\CollectionFactory;
 
 class DataDirector extends Template
 {
     /**
      * @var CollectionFactory
      */
-    protected $_collectionFactoty;
+    protected $_collectionFactory;
 
     /**
      * @param Template\Context $context
@@ -24,16 +24,14 @@ class DataDirector extends Template
     ) {
         $this->_collectionFactory = $collectionFactory;
         parent::__construct($context, $data);
-
     }
 
     /**
-     * @return array|int|mixed|null
+     * @return int
      */
-    public function getDataDirector(){
-        $actorCollection = $this->_collectionFactory->create();
-        $actorCollection->getTable('magenest_director');
-        return $actorCollection->getSize();
+    public function getDataDirector()
+    {
+        $movieCollection = $this->_collectionFactory->create();
+        return $movieCollection->getSize();
     }
-
 }

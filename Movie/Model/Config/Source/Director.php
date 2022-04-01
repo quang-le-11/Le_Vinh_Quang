@@ -1,23 +1,34 @@
 <?php
 
 namespace Magenest\Movie\Model\Config\Source;
-use Magenest\Movie\Model\ResourceModel\Movie\CollectionFactory;
+
+use Magenest\Movie\Model\ResourceModel\Director\CollectionFactory;
+
 
 class Director implements \Magento\Framework\Option\ArrayInterface
 {
+    /**
+     * @var CollectionFactory
+     */
     protected $_collectionFactory;
 
+    /**
+     * @param CollectionFactory $collectionFactory
+     */
     public function __construct(
         CollectionFactory $collectionFactory
     ) {
         $this->_collectionFactory = $collectionFactory;
     }
 
+    /**
+     * @return array
+     */
     public function toOptionArray()
     {
         $data = $this->getDataDirector();
 
-        $result = [
+        $result[0] = [
             'value' => null,
             'label' => __('--Please Select--')
         ];
@@ -27,15 +38,15 @@ class Director implements \Magento\Framework\Option\ArrayInterface
                 'label' => $item['name']
             ];
         }
-
-        return [$result];
+        return $result;
     }
 
-    public function getDataDirector(){
-        $directorCollection = $this->_collectionFactory->create();
-        $directorCollection->getTable('magenest_director');
-
-        return $directorCollection->getData();
-
+    /**
+     * @return array|null
+     */
+    public function getDataDirector()
+    {
+        $movieCollection = $this->_collectionFactory->create();
+        return $movieCollection->getData();
     }
 }

@@ -55,11 +55,11 @@ class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvide
                 "main_table.director_id = director.director_id",
                 ['director' => 'director.name']
             )
-            ->join(
+            ->joinLeft(
                 ['movie_actor' => $this->getTable('magenest_movie_actor')],
                 "main_table.movie_id = movie_actor.movie_id",
                 ['movie_actor' => 'movie_actor.actor_id'])
-            ->join(
+            ->joinLeft(
                 ['actor' => $this->getTable('magenest_actor')],
                 "movie_actor.actor_id = actor.actor_id",
                 ['actor' => new \Zend_Db_Expr('GROUP_CONCAT(actor.name)')])

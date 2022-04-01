@@ -2,12 +2,11 @@
 
 namespace Magenest\Movie\Block\Adminhtml\System\Config\Actor;
 
-
-use Magenest\Movie\Model\ResourceModel\Movie\CollectionFactory;
+use Magenest\Movie\Model\ResourceModel\Actor\CollectionFactory;
 
 class Actor extends \Magento\Config\Block\System\Config\Form\Field
 {
-    protected $_conllectionFactory;
+    protected $_collectionFactory;
 
     /**
      * @param \Magento\Backend\Block\Template\Context $context
@@ -20,7 +19,7 @@ class Actor extends \Magento\Config\Block\System\Config\Form\Field
         array                                   $data = []
     )
     {
-        $this->_conllectionFactory = $collectionFactory;
+        $this->_collectionFactory = $collectionFactory;
         parent::__construct($context, $data);
     }
 
@@ -41,8 +40,7 @@ class Actor extends \Magento\Config\Block\System\Config\Form\Field
      */
     public function getCountActor()
     {
-        $actorCollection = $this->_conllectionFactory->create();
-        $actorCollection->getTable('magenest_action');
+        $actorCollection = $this->_collectionFactory->create();
         return $actorCollection->getSize();
     }
 }

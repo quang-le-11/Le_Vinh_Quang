@@ -17,8 +17,7 @@ class Movie extends \Magento\Config\Block\System\Config\Form\Field
         \Magento\Backend\Block\Template\Context $context,
         CollectionFactory                       $collectionFactory,
         array                                   $data = []
-    )
-    {
+    ) {
         $this->_conllectionFactory = $collectionFactory;
         parent::__construct($context, $data);
     }

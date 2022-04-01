@@ -23,24 +23,32 @@ class SaveMovie extends Action
         $data = $this->getRequest()->getPostValue();
         $id = !empty($data['movie_id']) ? $data['movie_id'] : null;
 
+
+
         $newData = [
             'name' => $data['name'],
             'description' => $data['description'],
             'rating' => $data['rating'],
-            'director_id' => 4
+            'director_id' => $data['director_id']
         ];
 
         $movie = $this->movieFactory->create();
         if ($id) {
             $movie->load($id);
+            $this->messageManager->addSuccessMessage(__('Edit thành công.'));
+        } else
+        {
+            $this->getMessageManager()->addSuccessMessage(__('Save thành công.'));
         }
         try {
             $movie->addData($newData);
             $movie->save();
-            $this->messageManager->addSuccessMessage(__('You saved the post.'));
+            //$this->messageManager->addSuccessMessage(__('You saved the post.'));
+            return $this->resultRedirectFactory->create()->setPath('movie/index/index');
         } catch (\Exception $e) {
-            $this->messageManager->addErrorMessage(__($e->getMessage()));
+           // $this->messageManager->addErrorMessage(__($e->getMessage()));
+            $this->getMessageManager()->addErrorMessage(__('Save thất bại.'));
         }
-        return $this->resultRedirectFactory->create()->setPath('movie/index/index');
+        //return $this->resultRedirectFactory->create()->setPath('movie/index/index');
     }
 }

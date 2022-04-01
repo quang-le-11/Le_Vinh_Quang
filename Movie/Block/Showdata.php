@@ -11,7 +11,6 @@ class Showdata extends Template
      * @var CollectionFactory
      */
     protected $_collecton;
-    protected $_abstractFieldArray;
 
     /**
      * @param Template\Context $context
@@ -36,16 +35,16 @@ class Showdata extends Template
     {
         $movieCollection = $this->_collecton->create();
         $movieCollection->getSelect()
-            ->join(
+            ->joinLeft(
                 ['director' => $movieCollection->getTable('magenest_director')],
                 "main_table.director_id = director.director_id",
                 ['director' => 'director.name']
             )
-            ->join(
+            ->joinLeft(
                 ['movie_actor' => $movieCollection->getTable('magenest_movie_actor')],
                 "main_table.movie_id = movie_actor.movie_id",
                 ['movie_actor' => 'movie_actor.movie_id'])
-            ->join(
+            ->joinLeft(
                 ['actor' => $movieCollection->getTable('magenest_actor')],
                 "movie_actor.actor_id = actor.actor_id",
                 ['actor' => new \Zend_Db_Expr('GROUP_CONCAT(actor.name)')])
