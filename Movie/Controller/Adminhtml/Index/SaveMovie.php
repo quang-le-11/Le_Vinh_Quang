@@ -42,6 +42,7 @@ class SaveMovie extends Action
         }
         try {
             $movie->addData($newData);
+            $this->_eventManager->dispatch("meagenest_movie_before_save", ['movieData' => $movie]);
             $movie->save();
             //$this->messageManager->addSuccessMessage(__('You saved the post.'));
             return $this->resultRedirectFactory->create()->setPath('movie/index/index');

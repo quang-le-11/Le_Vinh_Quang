@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="meagenest_movie_before_save">
+        <observer name="meagenest_movie_before_save_movie"
+                  instance="Magenest\Movie\Observer\MoiveBeforeSave"/>
+    </event>
+
+    <event name="admin_system_config_changed_section_salesforce">
+        <observer name="config"
+                  instance="Magenest\Movie\Observer\ConfigChange"/>
+    </event>
+
+</config>
