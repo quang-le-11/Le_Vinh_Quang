@@ -10,4 +10,7 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Checkout\Controller\Cart\Add">
+        <plugin name="change_product_price" type="Magenest\Movie\Plugin\ProductPlugin" sortOrder="1" />
+    </type>
 </config>
