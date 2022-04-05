@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="10">
+            <label>Magenest</label>
+        </tab>
+        <section id="salesforce" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>SalesforceCRM Config</label>
+            <tab>magenest</tab>
+            <resource>Magenest_Movie::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>General Configuration</label>
+
+                <field id="textfield" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>textField</label>
+                </field>
+                <field id="notice" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label><![CDATA[Yes/No_Field_<strong class="colorRed">abcd</strong>]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="custom_select" translate="label" type="select" sortOrder="3" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Custom select field</label>
+                    <source_model>Magenest\Movie\Model\Config\Source\Custom</source_model>
+                </field>
+                <field id="magenest_movie" translate="label" type="text" sortOrder="4" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Magenest Movie</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\System\Config\Movie\Movie</frontend_model>
+                </field>
+                <field id="magenest_actor" translate="label" type="text" sortOrder="4" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Magenest Actor</label>
+                    <depends>
+                        <field id="custom_select">1</field>
+                    </depends>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\System\Config\Actor\Actor</frontend_model>
+                </field>
+                <field id="button_id" translate="label" type="button" sortOrder="6" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Buntton Field</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\System\Config\Button</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

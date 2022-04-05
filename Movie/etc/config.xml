@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <salesforce>
+            <general>
+                <textfield>I'm a text Field</textfield>
+                <notice>1</notice>
+                <custom_select>1</custom_select>
+            </general>
+        </salesforce>
+    </default>
+</config>
