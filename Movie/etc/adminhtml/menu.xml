@@ -14,11 +14,25 @@
              sortOrder="10"
              resource="Magenest_Movie::menu"
              parent="Magenest_Movie::magenest"/>
-        <add id="Magenest_Movie::xero"
+        <add id="Magenest_Movie::movie"
              title="Magenest Movie"
              module="Magenest_Movie"
              sortOrder="10"
              action="movie/index/index"
+             resource="Magenest_Movie::menu"
+             parent="Magenest_Movie::parent"/>
+        <add id="Magenest_Movie::actor"
+             title="Magenest Actor"
+             module="Magenest_Movie"
+             sortOrder="20"
+             action="movie/magenest_actor/index"
+             resource="Magenest_Movie::menu"
+             parent="Magenest_Movie::parent"/>
+        <add id="Magenest_Movie::director"
+             title="Magenest Director"
+             module="Magenest_Movie"
+             sortOrder="30"
+             action="movie/magenest_director/index"
              resource="Magenest_Movie::menu"
              parent="Magenest_Movie::parent"/>
     </menu>
