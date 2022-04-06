@@ -3,17 +3,18 @@
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">movie_index_listing.magenest_movie_listing_data_source</item>
+            <item name="provider" xsi:type="string">movie_magenest_director_listing.movie_director_listing_data_source
+            </item>
         </item>
     </argument>
     <settings>
-        <spinner>your_grid_columns</spinner>
+        <spinner>grid_actor</spinner>
         <deps>
-            <dep>movie_index_listing.magenest_movie_listing_data_source</dep>
+            <dep>movie_magenest_director_listing.movie_director_listing_data_source</dep>
         </deps>
         <buttons>
             <button name="add">
-                <url path="*/*/newmovie"/>
+                <url path="*/*/newdirector"/>
                 <class>primary</class>
                 <label translate="true">New Rule</label>
             </button>
@@ -51,30 +52,30 @@
             </action>
         </massaction>
     </listingToolbar>
-    <dataSource name="magenest_movie_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <dataSource name="movie_director_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <updateUrl path="mui/index/render"/>
             <storageConfig>
-                <param name="indexField" xsi:type="string">movie_id</param>
+                <param name="indexField" xsi:type="string">director_id</param>
             </storageConfig>
         </settings>
         <aclResource>Magento_Reports::salesroot_sales</aclResource>
         <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
-                      name="magenest_movie_listing_data_source">
+                      name="movie_director_listing_data_source">
             <settings>
-                <requestFieldName>movie_id</requestFieldName>
-                <primaryFieldName>movie_id</primaryFieldName>
+                <requestFieldName>director_id</requestFieldName>
+                <primaryFieldName>director_id</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
 
-    <columns name="your_grid_columns">
+    <columns name="grid_actor">
         <selectionsColumn name="ids">
             <settings>
-                <indexField>movie_id</indexField>
+                <indexField>director_id</indexField>
             </settings>
         </selectionsColumn>
-        <column name="movie_id">
+        <column name="director_id">
             <settings>
                 <label translate="true">ID</label>
                 <filter>text</filter>
@@ -87,33 +88,9 @@
             </settings>
         </column>
 
-        <column name="description">
+        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\Directoraction">
             <settings>
-                <filter>text</filter>
-                <label translate="true">Description</label>
-            </settings>
-        </column>
-        <column name="rating">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Rating</label>
-            </settings>
-        </column>
-        <column name="director">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Director</label>
-            </settings>
-        </column>
-        <column name="actor">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Actor</label>
-            </settings>
-        </column>
-        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\Movieaction">
-            <settings>
-                <indexField>movie_id</indexField>
+                <indexField>director_id</indexField>
             </settings>
         </actionsColumn>
     </columns>

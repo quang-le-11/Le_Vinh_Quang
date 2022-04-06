@@ -7,7 +7,7 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
-class Action extends Column
+class Actoraction extends Column
 {
     /**
      * @var UrlInterface
@@ -45,7 +45,7 @@ class Action extends Column
             foreach ($dataSource['data']['items'] as & $item) {
                 $item[$this->getData('name')] = [
                     'edit' => [
-                        'href' => $this->urlBuilder->getUrl('movie/index/newmovie', ['id' => $item['movie_id']]),
+                        'href' => $this->urlBuilder->getUrl('movie/magenest_actor/newactor', ['id' => $item['actor_id']]),
                         'label' => __('Edit')
                     ]
                 ];
