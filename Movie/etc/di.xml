@@ -40,4 +40,7 @@
             <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Director</argument>
         </arguments>
     </virtualType>
+    <type name="Magento\Checkout\Controller\Cart\Add">
+        <plugin name="change_product_price" type="Magenest\Movie\Plugin\ProductPlugin" sortOrder="1" />
+    </type>
 </config>
