@@ -3,30 +3,32 @@
 namespace Magenest\Movie\Block;
 
 use Magento\Framework\View\Element\Template;
+use Magento\Customer\Model\Session;
 
 class Customer extends Template
 {
-    protected $resultPageFactory;
     protected $_customerSession;
 
+    /**
+     * @param Template\Context $context
+     * @param Session $customerSession
+     * @param array $data
+     */
     public function __construct(
         Template\Context                           $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Customer\Model\Session            $customerSession,
+        Session                                    $customerSession,
         array                                      $data = []
     ) {
-        $this->resultPageFactory = $resultPageFactory;
         $this->_customerSession = $customerSession;
         parent::__construct($context, $data);
     }
 
-    public function execute()
-    {
-        return $this->resultPageFactory->create();
-    }
-
+    /**
+     * @return \Magento\Customer\Model\Customer
+     */
     public function getCustomer()
     {
-        return $this->_customerSession->getCustomer();
+        $customerData = $this->_customerSession->getCustomer();
+        return $customerData;
     }
 }

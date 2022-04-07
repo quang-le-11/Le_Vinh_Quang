@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var \Magenest\Movie\Block\Customer $block
+ */
+$customer = $block->getCustomer();
+
+$name = $customer->getName();
+$email = $customer->getEmail();
+$avatar = $customer->getData('customer_attribute_avatar');
+
+echo '<p>Name: ' . $name . '</p>';
+echo '<p>Email: ' . $email . '</p>';
+echo '<img src="http://example.com/media/customer' . $avatar . '" alt="'.$name.'" style="width: auto; height: auto;">';
+?>
+
+
+
