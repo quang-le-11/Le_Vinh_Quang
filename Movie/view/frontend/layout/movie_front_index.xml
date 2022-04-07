@@ -10,8 +10,8 @@
         </referenceBlock>
         <referenceContainer name="content">
             //class="Magento\Framework\View\Element\Template"
-            <block class="Magenest\Movie\Block\Customer" name="custom_tab"
-                   template="Magenest_Movie::tab_content.phtml"/>
+            <block class="Magenest\Movie\Block\Customer" name="custom_tab" cacheable="false"
+                   template="Magenest_Movie::tab_content_avatar.phtml"/>
         </referenceContainer>
     </body>
 </page>
