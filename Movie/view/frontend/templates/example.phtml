@@ -1,0 +1,70 @@
+<button id="button">
+    <span>Magento'</span>
+</button>
+
+<div id="modal">
+    <div class="modal-body-content">
+        <p>Hello World</p>
+    </div>
+</div>
+
+<button id="test">
+    <span>test</span>
+</button>
+
+<button id="magenest">
+    <span>test form</span>
+</button>
+
+<div id="testform">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit">
+</div>
+
+
+<script type="text/javascript">
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ], function ($, modal) {
+        $(document).on("click", "#test", function () {
+            alert("Helo");
+        })
+
+        var options = {
+            type: 'popup',
+            responsive: true,
+            title: 'Magenest',
+            buttons: [{
+                text: $.mage.__('Ok'),
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+        var popup = modal(options, $('#modal'));
+        $("#button").click(function () {
+            $('#modal').modal('openModal');
+        });
+
+        var test = {
+            type: 'test1',
+            responsive: true,
+            title: 'Modal Login',
+            buttons: [{
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+        var test1 = modal(test, $('#testform'));
+        $('#magenest').click(function () {
+            $('#testform').modal(test1);
+        })
+    });
+</script>
