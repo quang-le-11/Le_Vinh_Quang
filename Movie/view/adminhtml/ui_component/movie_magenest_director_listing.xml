@@ -88,7 +88,7 @@
             </settings>
         </column>
 
-        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\Directoraction">
+        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\DirectorAction">
             <settings>
                 <indexField>director_id</indexField>
             </settings>

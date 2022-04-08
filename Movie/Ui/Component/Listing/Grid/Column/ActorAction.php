@@ -7,7 +7,7 @@ use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
-class Actoraction extends Column
+class ActorAction extends Column
 {
     /**
      * @var UrlInterface
