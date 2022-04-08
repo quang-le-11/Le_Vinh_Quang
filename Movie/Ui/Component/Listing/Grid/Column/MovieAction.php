@@ -2,13 +2,12 @@
 
 namespace Magenest\Movie\Ui\Component\Listing\Grid\Column;
 
-
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 
-class Directoraction extends Column
+class MovieAction extends Column
 {
     /**
      * @var UrlInterface
@@ -46,7 +45,7 @@ class Directoraction extends Column
             foreach ($dataSource['data']['items'] as & $item) {
                 $item[$this->getData('name')] = [
                     'edit' => [
-                        'href' => $this->urlBuilder->getUrl('movie/magenest_director/newdirector', ['id' => $item['director_id']]),
+                        'href' => $this->urlBuilder->getUrl('movie/index/newmovie', ['id' => $item['movie_id']]),
                         'label' => __('Edit')
                     ]
                 ];

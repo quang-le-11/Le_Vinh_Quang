@@ -87,7 +87,7 @@
             </settings>
         </column>
 
-        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\Actoraction">
+        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\ActorAction">
             <settings>
                 <indexField>actor_id</indexField>
             </settings>

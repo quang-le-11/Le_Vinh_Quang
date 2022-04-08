@@ -111,7 +111,7 @@
                 <label translate="true">Actor</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\Movieaction">
+        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Grid\Column\MovieAction">
             <settings>
                 <indexField>movie_id</indexField>
             </settings>
