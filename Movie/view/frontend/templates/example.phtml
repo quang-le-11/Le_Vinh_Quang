@@ -1,5 +1,55 @@
+<style>
+    #testContent {
+        height: 250px;
+        background: #86de00;
+        padding: 50px 0 0 0;
+    }
+
+    #testform {
+        margin: 0 auto;
+        width: 250px;
+        height: 200px;
+        padding: 20px 0 0 0;
+    }
+
+    #testlayout {
+        width: 400px;
+        margin: 0 auto;
+        background: white;
+    }
+
+    #email {
+        background: #bfe6ff;
+        margin-top: 10px;
+    }
+
+    #pass {
+        background: #bfe6ff;
+        margin-top: 15px;
+    }
+
+    #login {
+        width: 250px;
+        margin: 0 0 11px 0;
+        background: #328732;
+        color: white;
+    }
+
+    #testbock {
+        text-align: center;
+        height: 25px;
+    }
+
+    #testbock span {
+        color: #8282c1;
+    }
+</style>
+<button id="test">
+    <span>test</span>
+</button>
+
 <button id="button">
-    <span>Magento'</span>
+    <span>Magento</span>
 </button>
 
 <div id="modal">
@@ -8,24 +58,25 @@
     </div>
 </div>
 
-<button id="test">
-    <span>test</span>
-</button>
 
 <button id="magenest">
     <span>test form</span>
 </button>
 
-<div id="testform">
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname" value="John"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" value="Doe"><br><br>
-    <input type="submit" value="Submit">
+<div id="testContent">
+    <div id="testlayout">
+        <form id="testform">
+            <input type="email" id="email"><br>
+            <input type="password" id="pass"><br><br>
+            <button id="login">Login</button>
+            <div id="testbock">
+                <span>magento</span>
+            </div>
+        </form>
+    </div>
 </div>
 
-
-<script type="text/javascript">
+<script>
     require([
         "jquery",
         "Magento_Ui/js/modal/modal"
@@ -47,24 +98,22 @@
             }]
         };
         var popup = modal(options, $('#modal'));
-        $("#button").click(function () {
+        $('#button').click(function () {
             $('#modal').modal('openModal');
         });
 
         var test = {
-            type: 'test1',
+            type: 'popup',
             responsive: true,
+            innerScroll: true,
             title: 'Modal Login',
-            buttons: [{
-                class: '',
-                click: function () {
-                    this.closeModal();
-                }
-            }]
+            buttons: []
+
         };
-        var test1 = modal(test, $('#testform'));
-        $('#magenest').click(function () {
-            $('#testform').modal(test1);
-        })
+
+        var popup = modal(test, $('#testContent'));
+        $("#magenest").on('click', function () {
+            $('#testContent').modal('openModal');
+        });
     });
 </script>
