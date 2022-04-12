@@ -12,7 +12,8 @@ class SaveMovie extends Action
     public function __construct(
         Action\Context $context,
         MovieFactory   $movieFactory
-    ) {
+    )
+    {
         parent::__construct($context);
         $this->movieFactory = $movieFactory;
     }
@@ -23,6 +24,11 @@ class SaveMovie extends Action
         $data = $this->getRequest()->getPostValue();
         $id = !empty($data['movie_id']) ? $data['movie_id'] : null;
 
+
+        if ($data['rating'] < 0 || $data['rating'] > 5) {
+            $this->getMessageManager()->addErrorMessage(__('Rating < 0 or rating > 5.'));
+            return $this->resultRedirectFactory->create()->setPath('movie/index/newmovie');
+        }
 
 
         $newData = [
@@ -36,18 +42,17 @@ class SaveMovie extends Action
         if ($id) {
             $movie->load($id);
             $this->messageManager->addSuccessMessage(__('Edit thành công.'));
-        } else
-        {
+        } else {
             $this->getMessageManager()->addSuccessMessage(__('Save thành công.'));
         }
         try {
             $movie->addData($newData);
-            $this->_eventManager->dispatch("meagenest_movie_before_save", ['movieData' => $movie]);
+//            $this->_eventManager->dispatch("meagenest_movie_before_save", ['movieData' => $movie]);
             $movie->save();
             //$this->messageManager->addSuccessMessage(__('You saved the post.'));
             return $this->resultRedirectFactory->create()->setPath('movie/index/index');
         } catch (\Exception $e) {
-           // $this->messageManager->addErrorMessage(__($e->getMessage()));
+            // $this->messageManager->addErrorMessage(__($e->getMessage()));
             $this->getMessageManager()->addErrorMessage(__('Save thất bại.'));
         }
         //return $this->resultRedirectFactory->create()->setPath('movie/index/index');

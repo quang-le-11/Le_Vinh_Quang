@@ -15,7 +15,7 @@
             <button name="add">
                 <url path="*/*/newmovie"/>
                 <class>primary</class>
-                <label translate="true">New Rule</label>
+                <label translate="true">New Movie</label>
             </button>
         </buttons>
     </settings>
@@ -93,11 +93,14 @@
                 <label translate="true">Description</label>
             </settings>
         </column>
-        <column name="rating">
-            <settings>
-                <filter>text</filter>
-                <label translate="true">Rating</label>
-            </settings>
+        <column name="rating" class="Magenest\Movie\Ui\Component\Listing\Column\Star">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Rating</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
         </column>
         <column name="director">
             <settings>

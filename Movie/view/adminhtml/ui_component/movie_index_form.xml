@@ -20,7 +20,7 @@
                 <label translate="true">Back</label>
             </button>
             <button name="save">
-                <url path="helloworld/post/save"/>
+                <url path="movie/index/saveMovie"/>
                 <class>primary</class>
                 <label translate="true">Save</label>
             </button>
@@ -39,7 +39,6 @@
             </item>
         </argument>
         <settings>
-            <!--            <validateUrl path="catalog/category/validate"/>-->
             <submitUrl path="movie/index/savemovie"/>
         </settings>
         <dataProvider class="Magenest\Movie\Model\Config\DataProvider" name="magenest_index_form_data_source">
@@ -58,6 +57,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">post_rules</item>
+
                 </item>
             </argument>
             <settings>
@@ -71,7 +71,7 @@
             </settings>
         </field>
 
-        <field name="description" formElement="textarea">
+        <field name="description" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">post_rules</item>
@@ -90,19 +90,23 @@
 
         <field name="rating" formElement="input">
             <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
+                <item name="config" xsi:type="array">-+
                     <item name="source" xsi:type="string">post_rules</item>
                 </item>
             </argument>
             <settings>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-zero-or-greater" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="validate-digits-range" xsi:type="string">0-5</rule>
                     <rule name="max_text_length" xsi:type="number">255</rule>
                 </validation>
                 <label translate="true">Rating</label>
                 <dataType>text</dataType>
                 <visible>true</visible>
             </settings>
+
         </field>
 
         <field name="director_id" formElement="select">

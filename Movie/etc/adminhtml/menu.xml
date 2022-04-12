@@ -3,37 +3,48 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add
-            id="Magenest_Movie::magenest"
+            id="Magenest_Movie::menu"
             title="Magenest"
             module="Magenest_Movie"
             sortOrder="50"
-            resource="Magenest_Movie::magenest"/>
-        <add id="Magenest_Movie::parent"
-             title="Magenest"
-             module="Magenest_Movie"
-             sortOrder="10"
-             resource="Magenest_Movie::menu"
-             parent="Magenest_Movie::magenest"/>
+            resource="Magenest_Movie::menu"/>
         <add id="Magenest_Movie::movie"
              title="Magenest Movie"
              module="Magenest_Movie"
              sortOrder="10"
              action="movie/index/index"
              resource="Magenest_Movie::menu"
-             parent="Magenest_Movie::parent"/>
+             parent="Magenest_Movie::menu"/>
         <add id="Magenest_Movie::actor"
              title="Magenest Actor"
              module="Magenest_Movie"
              sortOrder="20"
              action="movie/magenest_actor/index"
              resource="Magenest_Movie::menu"
-             parent="Magenest_Movie::parent"/>
+             parent="Magenest_Movie::menu"/>
+
         <add id="Magenest_Movie::director"
              title="Magenest Director"
              module="Magenest_Movie"
              sortOrder="30"
              action="movie/magenest_director/index"
              resource="Magenest_Movie::menu"
-             parent="Magenest_Movie::parent"/>
+             parent="Magenest_Movie::menu"/>
+
+        <add id="Magenest_Movie::parent"
+             title="test"
+             module="Magenest_Movie"
+             sortOrder="50"
+             resource="Magenest_Movie::sub_one_menu"
+             parent="Magenest_Movie::menu"/>
+
+        <add id="Magenest_Movie::oneMenu"
+             title="Sub one menu"
+             module="Magenest_Movie"
+             sortOrder="20"
+             action="movie/page/view"
+             parent="Magenest_Movie::parent"
+             resource="Magenest_Movie::sub_one_menu"/>
+
     </menu>
 </config>
