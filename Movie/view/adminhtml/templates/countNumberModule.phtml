@@ -1,0 +1,60 @@
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title">Show Dada</span>
+    </div>
+    <div class="admin__page-section-content order-view-account-information">
+        <div class="admin__page-section-item order-information">
+            <div class="admin__page-section-item-title">
+                <span class="title">
+                   Number Module
+                </span>
+                <div class="admin__page-section-item-content">
+                    <table class="admin__table-secondary order-information-table">
+                        <tr>
+                            <th>Module Magento</th>
+                            <td><?php echo $block->countModuleMagento(); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Module Not Magento</th>
+                            <td><?php echo $block->countNoModuleMagento() ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin__page-section-item order-account-information">
+            <div class="admin__page-section-item-content">
+                <div class="admin__page-section-item-title">
+                    <span class="title">
+                      Detail
+                    </span>
+                    <div class="admin__page-section-item-content">
+                        <table class="admin__table-secondary order-information-table">
+                            <tr>
+                                <th>Customer</th>
+                                <td><?php echo $block->getSizeCustomer(); ?></td>
+                            </tr>
+                            <tr>
+                                <th>Product</th>
+                                <td><?php echo $block->getSizeProduct() ?></td>
+                            </tr>
+                            <tr>
+                                <th>Order</th>
+                                <td><?php echo $block->getSizeOrder() ?></td>
+                            </tr>
+                            <tr>
+                                <th>Invoice</th>
+                                <td><?php echo $block->getSizeInvoice() ?></td>
+                            </tr>
+                            <tr>
+                                <th>Credit Memos</th>
+                                <td><?php echo $block->getSizeCreditmemo() ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
