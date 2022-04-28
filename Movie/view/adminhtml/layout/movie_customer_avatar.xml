@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <container name="content" label="Root">
+        <block class="Magenest\Movie\Block\Adminhtml\Customer\EditAvatar"
+               name="Credit.edit.tab.credit"
+               template="Magenest_Movie::customer/customerAvatar.phtml"
+               cacheable="false"/>
+    </container>
+
+</layout>
