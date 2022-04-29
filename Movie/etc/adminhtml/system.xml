@@ -49,4 +49,25 @@
             </group>
         </section>
     </system>
+
+    <system>
+        <tab id="customize" translate="label" sortOrder="20">
+            <label>Customize Customer</label>
+        </tab>
+        <section id="customize_custom" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Customize Customer</label>
+            <tab>customize</tab>
+            <resource>Magenest_Movie::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configuration Customer</label>
+                <field id="custom" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Customer</label>
+                    <comment/>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\Form\Field\Customer</frontend_model>
+                    <backend_model>Magenest\Movie\Block\Adminhtml\System\Config\SaveCustomerGroupField</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
 </config>
