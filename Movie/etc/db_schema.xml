@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="calendar" resource="default" engine="innodb" comment="Customize Calendar Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="int" name="product_id" unsigned="true" nullable="false" comment="product ID"/>
+        <column xsi:type="varchar" name="calendar" nullable="false"
+                comment="Attribute Set calendar" length="100"/>
+        <column xsi:type="varchar" name="uploadCalendar" nullable="false" length="32"
+                comment="Upload Costomize Calendar"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PRODUCT_ID_CALENDAR_ENTITY_ID_PRODUCT"
+                    table="calendar" column="product_id" referenceTable="catalog_product_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

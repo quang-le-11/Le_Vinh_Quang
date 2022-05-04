@@ -43,4 +43,9 @@
     <type name="Magento\Checkout\Controller\Cart\Add">
         <plugin name="change_product_price" type="Magenest\Movie\Plugin\ProductPlugin" sortOrder="1" />
     </type>
+
+<!--    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider">-->
+<!--        <plugin name="productdata" type="Magenest\Movie\Plugin\ProductDataProvider" />-->
+<!--    </type>-->
+
 </config>

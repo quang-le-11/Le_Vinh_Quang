@@ -11,4 +11,8 @@
                   instance="Magenest\Movie\Observer\ConfigChange"/>
     </event>
 
+    <event name="controller_action_catalog_product_save_entity_after">
+        <observer name="wire_products_update" instance="Magenest\Movie\Observer\UploadAvatar" />
+    </event>
+
 </config>

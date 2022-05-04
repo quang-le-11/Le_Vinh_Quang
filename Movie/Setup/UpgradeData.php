@@ -35,7 +35,7 @@ class UpgradeData implements UpgradeDataInterface
 
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
 
-        if (version_compare($context->getVersion(), '1.0.2') < 0) {
+        if (version_compare($context->getVersion(), '1.0.0') < 0) {
 
             $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, 'customer_attribute_avatar', [
                 'type' => 'varchar',
