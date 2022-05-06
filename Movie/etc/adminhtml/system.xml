@@ -48,9 +48,7 @@
                 </field>
             </group>
         </section>
-    </system>
 
-    <system>
         <tab id="customize" translate="label" sortOrder="20">
             <label>Customize Customer</label>
         </tab>
@@ -70,4 +68,5 @@
             </group>
         </section>
     </system>
+
 </config>

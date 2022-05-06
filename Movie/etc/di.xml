@@ -44,8 +44,9 @@
         <plugin name="change_product_price" type="Magenest\Movie\Plugin\ProductPlugin" sortOrder="1" />
     </type>
 
-<!--    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider">-->
-<!--        <plugin name="productdata" type="Magenest\Movie\Plugin\ProductDataProvider" />-->
+
+<!--    <type name="Magento\Ui\DataProvider\EavValidationRules">-->
+<!--        <plugin name="custom_attribute_validation" type="Magenest\Movie\Plugin\EavValidationRules" sortOrder="10" disabled="false"  />-->
 <!--    </type>-->
 
 </config>
