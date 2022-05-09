@@ -16,4 +16,56 @@
                     table="calendar" column="product_id" referenceTable="catalog_product_entity"
                     referenceColumn="entity_id" onDelete="CASCADE"/>
     </table>
+
+    <table name="magenest_blog" resource="default" engine="innodb" comment="Magenest Blog Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="int" name="author_id" unsigned="true" nullable="false" comment="Author ID"/>
+        <column xsi:type="varchar" name="title" nullable="false" comment="Title" length="255"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Blog Description"/>
+        <column xsi:type="varchar" name="content" nullable="false" comment="Content" length="255"/>
+        <column xsi:type="text" name="url_rewrite" nullable="true" comment="Blog Url Rewrite"/>
+        <column xsi:type="smallint" name="is_active" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Blog Active"/>
+        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Page Creation Time"/>
+        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"/>
+
+        <index referenceId="TITLE" indexType="btree">
+            <column name="title" />
+        </index>
+        <index referenceId="CONTENT" indexType="btree">
+            <column name="content" />
+        </index>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="ID_BLOCK_ADMIN_USER_ID"
+                    table="magenest_blog" column="author_id" referenceTable="admin_user"
+                    referenceColumn="user_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="magenest_category" resource="default" engine="innodb" comment="Magenest Category Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" comment="Name" length="255"/>
+
+        <index referenceId="IDENTIFIER" indexType="btree">
+            <column name="name" />
+        </index>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="magenest_blog_category" resource="default" engine="innodb" comment="Magenest Blog Category Table">
+        <column xsi:type="int" name="blog_id" unsigned="true" nullable="false" comment="Blog ID"/>
+        <column xsi:type="int" name="category_id" unsigned="true" nullable="false" comment="Category ID"/>
+
+        <constraint xsi:type="foreign" referenceId="BLOCK_ID_MAGENEST_BLOG_ID"
+                    table="magenest_blog_category" column="blog_id" referenceTable="magenest_blog"
+                    referenceColumn="id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="CATEGORY_ID_MAGENENST_CATEGORY_ID"
+                    table="magenest_blog_category" column="category_id" referenceTable="magenest_category"
+                    referenceColumn="id" onDelete="CASCADE"/>
+    </table>
+
 </schema>
