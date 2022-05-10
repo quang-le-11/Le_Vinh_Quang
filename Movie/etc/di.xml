@@ -44,13 +44,11 @@
         <plugin name="change_product_price" type="Magenest\Movie\Plugin\ProductPlugin" sortOrder="1" />
     </type>
 
-
-<!--    <type name="Magento\Checkout\Model\ShippingInformationManagement">-->
-<!--        <plugin name="save_custom_field" type="Magenest\Movie\Plugin\Checkout\SaveAddressInformation" />-->
-<!--    </type>-->
-
-    <!--    <type name="Magento\Ui\DataProvider\EavValidationRules">-->
-<!--        <plugin name="custom_attribute_validation" type="Magenest\Movie\Plugin\EavValidationRules" sortOrder="10" disabled="false"  />-->
-<!--    </type>-->
+    <type name="Magento\Quote\Model\BillingAddressManagement">
+        <plugin disabled="false" name="Magenest_Movie_Plugin_Magento_Quote_Model_BillingAddressManagement" sortOrder="10" type="Magenest\Movie\Plugin\Quote\Model\BillingAddressManagement"/>
+    </type>
+    <type name="Magento\Quote\Model\ShippingAddressManagement">
+        <plugin disabled="false" name="Magenest_Movie_Plugin_Magento_Quote_Model_ShippingAddressManagement" sortOrder="10" type="Magenest\Movie\Plugin\Quote\Model\ShippingAddressManagement"/>
+    </type>
 
 </config>

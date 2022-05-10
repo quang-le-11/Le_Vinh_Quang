@@ -68,4 +68,12 @@
                     referenceColumn="id" onDelete="CASCADE"/>
     </table>
 
+    <table name="sales_order_address">
+        <column xsi:type="int" name="vn_region" nullable="true" unsigned="true" comment="Region"/>
+    </table>
+
+    <table name="quote_address">
+        <column xsi:type="int" name="vn_region" nullable="true" unsigned="true" comment="Region"/>
+    </table>
+
 </schema>

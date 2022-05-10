@@ -15,7 +15,13 @@ define([
                 shippingAddress['extension_attributes'] = {};
             }
 
-            shippingAddress['extension_attributes']['custom_field'] = shippingAddress.customAttributes['custom_field'];
+            var attribute = shippingAddress.customAttributes.find(
+                function (element) {
+                    return element.attribute_code === 'vn_region';
+                }
+            );
+
+            shippingAddress['extension_attributes']['vn_region'] = attribute.value;
             // pass execution to original action ('Magento_Checkout/js/action/set-shipping-information')
             return originalAction();
         });
