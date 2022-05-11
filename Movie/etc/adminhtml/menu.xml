@@ -35,5 +35,8 @@
              action="movie/magenest_director/index"
              resource="Magenest_Movie::menu"
              parent="Magenest_Movie::parent"/>
+
+        <add id="Magenest_Movie::blog" title="Magenest Blog" module="Magenest_Movie" resource="Magenest_Movie::menu"  parent="Magenest_Movie::magenest" />
+        <add id="Magenest_Movie::blog_author" title="Magenest Blog" module="Magenest_Movie" action="movie/magenest_blog/index" resource="Magenest_Movie::menu" parent="Magenest_Movie::blog" />
     </menu>
 </config>

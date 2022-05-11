@@ -39,13 +39,21 @@ class B2BAttributeCustomer implements DataPatchInterface
                 'type' => 'int',
                 'input' => 'boolean',
                 'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
-                'visible' => false,
                 'required' => false,
-                'user_defined' => true,
+                'sort_order' => 100,
                 'system' => false,
-                'group' => 'General',
-                'global' => true,
+                'visible' => true,
+                'user_defined' => false,
+                'searchable' => true,
+                'filterable' => true,
+                'comparable' => true,
+                'frontend_class' => '',
                 'visible_on_front' => true,
+                'is_used_in_grid' => true,
+                'is_visible_in_grid' => true,
+                'is_filterable_in_grid' => true,
+                'unique' => false,
+                'apply_to' => ''
             ]
         );
         $attributeSetId = $eavSetup->getDefaultAttributeSetId(\Magento\Customer\Model\Customer::ENTITY);

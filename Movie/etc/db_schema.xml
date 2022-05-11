@@ -24,11 +24,11 @@
         <column xsi:type="text" name="description" nullable="true" comment="Blog Description"/>
         <column xsi:type="varchar" name="content" nullable="false" comment="Content" length="255"/>
         <column xsi:type="text" name="url_rewrite" nullable="true" comment="Blog Url Rewrite"/>
-        <column xsi:type="smallint" name="is_active" unsigned="false" nullable="false" identity="false"
+        <column xsi:type="smallint" name="status" unsigned="false" nullable="false" identity="false"
                 default="1" comment="Is Blog Active"/>
-        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+        <column xsi:type="timestamp" name="create_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Page Creation Time"/>
-        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"/>
+        <column xsi:type="timestamp" name="update_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"/>
 
         <index referenceId="TITLE" indexType="btree">
             <column name="title" />

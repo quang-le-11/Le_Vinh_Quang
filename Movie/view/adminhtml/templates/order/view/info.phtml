@@ -184,7 +184,7 @@ $allowedAddressHtmlTags = ['b', 'br', 'em', 'i', 'li', 'ol', 'p', 'strong', 'sub
                     <div class="actions"><?= /* @noEscape */ $block->getAddressEditLink($order->getShippingAddress()); ?></div>
                 </div>
                 <address class="admin__page-section-item-content"><?= $block->escapeHtml($block->getFormattedAddress($order->getShippingAddress()), $allowedAddressHtmlTags); ?></address>
-                <address class="admin__page-section-item-content">2</address>
+                <address class="admin__page-section-item-content"><?=$order->getShippingAddress()->getData('vn_region'); ?></address>
             </div>
         <?php endif; ?>
     </div>

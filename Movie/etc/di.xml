@@ -44,6 +44,16 @@
         <plugin name="change_product_price" type="Magenest\Movie\Plugin\ProductPlugin" sortOrder="1" />
     </type>
 
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blog_data_source" xsi:type="string">
+                    Magenest\Movie\Model\ResourceModel\Blog\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
     <type name="Magento\Quote\Model\BillingAddressManagement">
         <plugin disabled="false" name="Magenest_Movie_Plugin_Magento_Quote_Model_BillingAddressManagement" sortOrder="10" type="Magenest\Movie\Plugin\Quote\Model\BillingAddressManagement"/>
     </type>
