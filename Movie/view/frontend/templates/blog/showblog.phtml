@@ -1,0 +1,38 @@
+<?php
+/** @var \Magenest\Movie\Block\Showdata $block */
+$movie = $block->getBlog();
+echo $block->getCountMovie();
+?>
+
+<div class="table-wrapper orders-history">
+    <table class="data table table-order-items history" id="my-orders-table">
+        <thead>
+        <tr>
+            <th scope="col" class="col id"><?php echo __('ID') ?></th>
+            <th scope="col" class="col name"><?php echo __('Title') ?></th>
+            <th scope="col" class="col discription"><?php echo __('Description') ?></th>
+            <th scope="col" class="col rating"><?php echo __('Url Rewrite') ?></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach ($movie as $item): ?>
+            <tr>
+                <td data-th="<?= $block->escapeHtml(__('ID')) ?>" class="col id">
+                    <?php echo $item->getId() ?>
+                </td>
+                <td data-th="<?= $block->escapeHtml(__('Title')) ?>" class="col name">
+                    <?php echo $item->getTitle() ?>
+                </td>
+                <td data-th="<?= $block->escapeHtml(__('Description')) ?>" class="col rating">
+                    <?php echo $item->getDescription() ?>
+                </td>
+                <td data-th="<?= $block->escapeHtml(__('Url Rewrite')) ?>" class="col rating">
+                    <?php echo  $item->getUrlRewrite() ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

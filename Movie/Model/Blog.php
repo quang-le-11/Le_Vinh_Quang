@@ -6,6 +6,8 @@ use  \Magento\Framework\Model\AbstractModel;
 
 class Blog extends AbstractModel
 {
+    protected $_eventPrefix = 'blog';
+
     /**
      * @return void
      */

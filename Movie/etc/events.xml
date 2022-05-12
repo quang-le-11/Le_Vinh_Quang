@@ -4,4 +4,10 @@
     <event name="sales_order_save_before">
         <observer name="payment_sales_order_save_before" instance= "Magenest\Movie\Observer\BeforeSaveAddress" />
     </event>
+
+    <event name="blog_save_before">
+        <observer name="blog_url_save_before" instance= "Magenest\Movie\Observer\CheckForExistenceUrl" />
+    </event>
+
+
 </config>

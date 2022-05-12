@@ -8,11 +8,15 @@ use Magento\Backend\App\Action;
 class Save extends Action
 {
     protected $blogFactory;
+    protected $_urlRewriteFactory;
 
     public function __construct(
         Action\Context $context,
-        BlogFactory $blogFactory
+        BlogFactory $blogFactory,
+        \Magento\UrlRewrite\Model\UrlRewriteFactory $urlRewriteFactory
+
     ) {
+        $this->_urlRewriteFactory = $urlRewriteFactory;
         $this->blogFactory = $blogFactory;
         parent::__construct($context);
     }
@@ -38,15 +42,24 @@ class Save extends Action
         if ($id) {
             $actor->load($id);
             $this->messageManager->addSuccessMessage(__('Edit thành công.'));
-        } else {
-            $this->getMessageManager()->addSuccessMessage(__('Save thành công.'));
         }
         try {
             $actor->addData($newData);
             $actor->save();
-            return $this->resultRedirectFactory->create()->setPath('*/*/');
+            $this->getMessageManager()->addSuccessMessage(__('Save thành công.'));
+
+            $urlRewrite = $this->_urlRewriteFactory->create();
+            $page = array(
+                'entity_type' => 'custom',
+                'entity_id' => 39,
+                'request_path' => $data['url_rewrite'],
+                'target_path' => 'movie/blog/index/id/39',
+            );
+            $urlRewrite->setData($page);
+            $urlRewrite->save();
         } catch (\Exception $e) {
-            $this->getMessageManager()->addErrorMessage(__('Save thất bại.'));
+            $this->getMessageManager()->addErrorMessage(__($e->getMessage()));
         }
+        return $this->resultRedirectFactory->create()->setPath('*/*/');
     }
 }
