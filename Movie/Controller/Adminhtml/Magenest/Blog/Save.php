@@ -9,15 +9,17 @@ class Save extends Action
 {
     protected $blogFactory;
     protected $_urlRewriteFactory;
+    protected $blogRepository;
 
     public function __construct(
         Action\Context $context,
         BlogFactory $blogFactory,
-        \Magento\UrlRewrite\Model\UrlRewriteFactory $urlRewriteFactory
-
+        \Magento\UrlRewrite\Model\UrlRewriteFactory $urlRewriteFactory,
+        \Magenest\Movie\Model\BlogRepository $blogRepository
     ) {
         $this->_urlRewriteFactory = $urlRewriteFactory;
         $this->blogFactory = $blogFactory;
+        $this->blogRepository = $blogRepository;
         parent::__construct($context);
     }
 
@@ -38,23 +40,25 @@ class Save extends Action
             'update_at' => '2022-05-11 14:53:03'
         ];
 
-        $actor = $this->blogFactory->create();
+        $blog = $this->blogFactory->create();
         if ($id) {
-            $actor->load($id);
+            $blog->load($id);
             $this->messageManager->addSuccessMessage(__('Edit thành công.'));
         }
         try {
-            $actor->addData($newData);
-            $actor->save();
+            $blog->addData($newData);
+//            $blog->save();
+            $this->blogRepository->save($blog);
             $this->getMessageManager()->addSuccessMessage(__('Save thành công.'));
 
             $urlRewrite = $this->_urlRewriteFactory->create();
-            $page = array(
+            $page = [
                 'entity_type' => 'custom',
-                'entity_id' => 39,
+                'entity_id' => $blog['id'],
                 'request_path' => $data['url_rewrite'],
-                'target_path' => 'movie/blog/index/id/39',
-            );
+                'target_path' => 'movie/blog/view/id/' . $blog['id'],
+                'store_id' => 1
+            ];
             $urlRewrite->setData($page);
             $urlRewrite->save();
         } catch (\Exception $e) {
