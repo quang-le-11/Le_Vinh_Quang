@@ -63,7 +63,7 @@
                     <label>Customer</label>
                     <comment/>
                     <frontend_model>Magenest\Movie\Block\Adminhtml\Form\Field\Customer</frontend_model>
-                    <backend_model>Magenest\Movie\Block\Adminhtml\System\Config\SaveCustomerGroupField</backend_model>
+                    <backend_model>Magenest\Movie\Block\Adminhtml\System\Config\SaveCustomer GroupField</backend_model>
                 </field>
             </group>
         </section>

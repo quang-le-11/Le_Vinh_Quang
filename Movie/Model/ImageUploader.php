@@ -8,7 +8,6 @@ use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\File\Uploader;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
 use Magento\Framework\UrlInterface;
 use Magento\MediaStorage\Helper\File\Storage\Database;
 use Magento\MediaStorage\Model\File\UploaderFactory;
@@ -57,10 +56,10 @@ class ImageUploader
         UploaderFactory       $uploaderFactory,
         StoreManagerInterface $storeManager,
         LoggerInterface       $logger,
-                              $baseTmpPath = self::IMAGE_TMP_PATH,
-                              $basePath = self::IMAGE_PATH,
-                              $allowedExtensions = [],
-                              $allowedMimeTypes = []
+        $baseTmpPath = self::IMAGE_TMP_PATH,
+        $basePath = self::IMAGE_PATH,
+        $allowedExtensions = [],
+        $allowedMimeTypes = []
     ) {
         $this->coreFileStorageDatabase = $coreFileStorageDatabase;
         $this->mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page layout="3columns"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magenest\Movie\Block\Test\View" name="test.post" template="Magenest_Movie::test/view.phtml">
+                <block class="Magento\Framework\View\Element\Template"
+                       name="test.social.sharing"
+                       template="Magenest_Movie::test/social/social_sharing.phtml">
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

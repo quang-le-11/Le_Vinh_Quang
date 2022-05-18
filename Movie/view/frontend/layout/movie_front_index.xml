@@ -9,7 +9,7 @@
             </action>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="Magenest\Movie\Block\Customer" name="custom_tab" cacheable="false"
+            <block class="Magenest\Movie\Block\Customer" name="custom_tab" cacheable="true"
                    template="Magenest_Movie::tab_content_avatar.phtml"/>
         </referenceContainer>
     </body>

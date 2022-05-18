@@ -2,27 +2,22 @@
 
 namespace Magenest\Movie\Ui\DataProvider\Product\Form\Modifier;
 
+use Magenest\Movie\Model\ResourceModel\Calendar\CollectionFactory;
 use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Downloadable\Api\Data\ProductAttributeInterface;
 use Magento\Downloadable\Model\Product\Type;
-use Magento\Ui\Component\Form\Element\DataType\Number;
-use Magento\Ui\Component\Form\Element\Hidden;
-use Magento\Ui\Component\Form\Fieldset;
-use Magento\Ui\Component\Form\Field;
-use Magento\Ui\Component\Form\Element\Input;
-use Magento\Ui\Component\DynamicRows;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Container;
-use Magento\Ui\Component\Form\Element\ActionDelete;
-use Magento\Ui\Component\Form\Element\Select;
+use Magento\Ui\Component\DynamicRows;
+use Magento\Ui\Component\Form\Element\DataType\Number;
 use Magento\Ui\Component\Form\Element\DataType\Text;
-use Magenest\Movie\Model\ResourceModel\Calendar\CollectionFactory;
-use \Magento\Store\Model\StoreManagerInterface;
-
+use Magento\Ui\Component\Form\Element\Hidden;
+use Magento\Ui\Component\Form\Element\Input;
+use Magento\Ui\Component\Form\Field;
+use Magento\Ui\Component\Form\Fieldset;
 
 class NewField extends AbstractModifier
 {
-
     const FIELD_ENABLE = 'affect_product_custom_options';
     const CONTAINER_HEADER_NAME = 'container_header';
     const GROUP_CUSTOMIZE_CALENDAR_OPTIONS_NAME = 'field_calendar';
@@ -49,8 +44,7 @@ class NewField extends AbstractModifier
         LocatorInterface      $locator,
         CollectionFactory     $collection,
         StoreManagerInterface $storeManager
-    )
-    {
+    ) {
         $this->locator = $locator;
         $this->collection = $collection;
         $this->storeManager = $storeManager;
@@ -85,7 +79,6 @@ class NewField extends AbstractModifier
                             'size' => $imageData[0]['size']
                         ]
                     ];
-
                 }
                 $dataOptions[] = [
                     'record_id' => '0',
@@ -119,7 +112,8 @@ class NewField extends AbstractModifier
     public function createCustomizeCalendarOptionsPanel($mate)
     {
         $mate = array_replace_recursive(
-            $mate, [
+            $mate,
+            [
                 static::GROUP_CUSTOMIZE_CALENDAR_OPTIONS_NAME => [
                     'arguments' => [
                         'data' => [

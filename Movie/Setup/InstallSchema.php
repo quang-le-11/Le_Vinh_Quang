@@ -49,7 +49,7 @@ class InstallSchema implements InstallSchemaInterface
                 //Set option for magetop_blog table
                 ->setOption('type', 'InnoDB')
                 ->setOption('charset', 'utf8');
-            $installer->getConnection()->createTable($table);;
+            $installer->getConnection()->createTable($table);
         }
 
         $tableNameActor = $installer->getTable('magenest_actor');
@@ -81,7 +81,7 @@ class InstallSchema implements InstallSchemaInterface
                 //Set option for magetop_blog table
                 ->setOption('type', 'InnoDB')
                 ->setOption('charset', 'utf8');
-            $installer->getConnection()->createTable($table);;
+            $installer->getConnection()->createTable($table);
         }
 
         $tableNameMovie = $installer->getTable('magenest_movie');
@@ -118,7 +118,7 @@ class InstallSchema implements InstallSchemaInterface
                     'rating',
                     Table::TYPE_INTEGER,
                     null,
-                    ['nullable' => false,],
+                    ['nullable' => false],
                     'rating'
                 )
                 ->addColumn(
@@ -145,7 +145,7 @@ class InstallSchema implements InstallSchemaInterface
                 //Set option for magetop_blog table
                 ->setOption('type', 'InnoDB')
                 ->setOption('charset', 'utf8');
-            $installer->getConnection()->createTable($table);;
+            $installer->getConnection()->createTable($table);
         }
 
         $tableNameMovieActor = $installer->getTable('magenest_movie_actor');
@@ -172,7 +172,8 @@ class InstallSchema implements InstallSchemaInterface
                         'magenest_movie_actor',
                         'movie_id',
                         'magenest_movie',
-                        'movie_id'),
+                        'movie_id'
+                    ),
                     'movie_id',
                     $setup->getTable('magenest_movie'),
                     'movie_id',
@@ -183,7 +184,8 @@ class InstallSchema implements InstallSchemaInterface
                         'magenest_movie_actor',
                         'actor_id',
                         'magenest_actor',
-                        'actor_id'),
+                        'actor_id'
+                    ),
                     'actor_id',
                     $setup->getTable('magenest_actor'),
                     'actor_id',
@@ -195,7 +197,7 @@ class InstallSchema implements InstallSchemaInterface
                 //Set option for magetop_blog table
                 ->setOption('type', 'InnoDB')
                 ->setOption('charset', 'utf8');
-            $installer->getConnection()->createTable($table);;
+            $installer->getConnection()->createTable($table);
         }
         $installer->endSetup();
     }

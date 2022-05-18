@@ -14,7 +14,7 @@ class AddDayCalendarAttribute implements DataPatchInterface
     protected $eavSetupFactory;
 
     /**
-     * @param ModuleDataSetupInterface $moduleDataSetup
+   eav  * @param ModuleDataSetupInterface $moduleDataSetup
      * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(

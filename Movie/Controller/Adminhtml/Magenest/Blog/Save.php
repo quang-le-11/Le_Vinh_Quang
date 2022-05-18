@@ -47,7 +47,7 @@ class Save extends Action
         }
         try {
             $blog->addData($newData);
-//            $blog->save();
+//            $blog->save();p
             $this->blogRepository->save($blog);
             $this->getMessageManager()->addSuccessMessage(__('Save thành công.'));
 
